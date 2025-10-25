@@ -1,6 +1,5 @@
 import 'package:catalyst/core/widgets/app_bar.dart';
 import 'package:catalyst/core/widgets/custom_text.dart';
-import 'package:catalyst/features/home/presentation/widgets/sections_list.dart';
 import 'package:flutter/material.dart';
 import 'package:catalyst/core/widgets/base_scaffold.dart';
 import 'package:catalyst/features/drawer/drawer.dart';

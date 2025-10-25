@@ -9,10 +9,14 @@ import 'package:catalyst/features/auth/presentation/views/login_view.dart';
 import 'package:catalyst/features/auth/presentation/views/register_view.dart';
 import 'package:catalyst/features/auto%20grade/presentation/views/auto_grade_view.dart';
 import 'package:catalyst/features/home/presentation/views/home_view.dart';
+import 'package:catalyst/features/my%20classes/presentation/views/students_in_class.dart';
 import 'package:catalyst/features/roots.dart';
 import 'package:catalyst/features/schedule/presentation/views/schedule_view.dart';
 import 'package:catalyst/features/splash/splash_view.dart';
-import 'package:catalyst/features/students/presentation/students/students_view.dart';
+import 'package:catalyst/features/student%20requests/presentation/views/student_profile.dart';
+import 'package:catalyst/features/student%20requests/presentation/views/student_requests.dart';
+import 'package:catalyst/features/students/presentation/students/create_exam_Page.dart';
+import 'package:catalyst/features/my classes/presentation/views/my_classes_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,6 +32,10 @@ class Routs {
   static const String schedule = '/schedule';
   static const String students = '/students';
   static const String autoGrade = '/autoGrade';
+  static const String studentRequests = '/studentRequests';
+  static const String studentProfile = '/studentProfile';
+  static const String myClasses = '/myClasses';
+  static const String studentsInClass = '/studentsInClass';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -66,10 +74,26 @@ class Routs {
       GoRoute(path: root, builder: (context, state) => const Root()),
       GoRoute(path: home, builder: (context, state) => const HomeView()),
       GoRoute(path: schedule, builder: (context, state) => const ScheduleView()),
-      GoRoute(path: students, builder: (context, state) => const StudentsView()),
+      GoRoute(path: students, builder: (context, state) => const CreateExamPage()),
       GoRoute(
         path: autoGrade,
         builder: (context, state) => const AutoGradeView(),
+      ),
+      GoRoute(
+        path: studentRequests,
+        builder: (context, state) => const StudentRequestsView(),
+      ),
+      GoRoute(
+        path: studentProfile,
+        builder: (context, state) => StudentProfile(from: state.extra as String),
+      ),
+      GoRoute(
+        path: myClasses,
+        builder: (context, state) => const MyClassesView(),
+      ),
+      GoRoute(
+        path: studentsInClass,
+        builder: (context, state) => const ClassStudentsView(),
       ),
     ],
   );

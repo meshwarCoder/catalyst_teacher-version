@@ -224,6 +224,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.1"
+  liquid_glass_bottom_bar:
+    dependency: "direct main"
+    description:
+      name: liquid_glass_bottom_bar
+      sha256: "31b19d83d6d10435bc75fafd1e7b5c90589334be1aa714b6139f0cbb6d9521df"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
+  liquid_glass_navbar:
+    dependency: "direct main"
+    description:
+      name: liquid_glass_navbar
+      sha256: a98c5dd5e29fabefa297b2a06c45b102e3969cd87239781f254529cab224e941
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
+  liquid_swipe:
+    dependency: "direct main"
+    description:
+      name: liquid_swipe
+      sha256: "04277568a4a5a5e8e1dfa8b222b4e497e294cf64e72113d936fcc54ef0e29149"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   logging:
     dependency: transitive
     description:

@@ -32,9 +32,9 @@ class CustomDrawer extends StatelessWidget {
               ),
               DrawerItem(
                 icon: CupertinoIcons.pen,
-                label: "Auto Grade",
+                label: "Students requests",
                 onTap: () {
-                  GoRouter.of(context).go(Routs.autoGrade);
+                  GoRouter.of(context).go(Routs.studentRequests);
                 },
               ),
               DrawerItem(
