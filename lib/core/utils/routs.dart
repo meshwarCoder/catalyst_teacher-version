@@ -15,8 +15,9 @@ import 'package:catalyst/features/schedule/presentation/views/schedule_view.dart
 import 'package:catalyst/features/splash/splash_view.dart';
 import 'package:catalyst/features/student%20requests/presentation/views/student_profile.dart';
 import 'package:catalyst/features/student%20requests/presentation/views/student_requests.dart';
-import 'package:catalyst/features/students/presentation/students/create_exam_Page.dart';
+import 'package:catalyst/features/students/presentation/students/create_exam_page.dart';
 import 'package:catalyst/features/my classes/presentation/views/my_classes_view.dart';
+import 'package:catalyst/features/students/presentation/students/exam_questions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -36,13 +37,11 @@ class Routs {
   static const String studentProfile = '/studentProfile';
   static const String myClasses = '/myClasses';
   static const String studentsInClass = '/studentsInClass';
+  static const String examQuestions = '/examQuestions';
 
   static final GoRouter router = GoRouter(
     routes: [
-      GoRoute(
-        path: splash,
-        builder: (context, state) => const SplashView(),
-      ),
+      GoRoute(path: splash, builder: (context, state) => const SplashView()),
       GoRoute(
         path: login,
         builder: (context, state) => BlocProvider(
@@ -73,8 +72,18 @@ class Routs {
       ),
       GoRoute(path: root, builder: (context, state) => const Root()),
       GoRoute(path: home, builder: (context, state) => const HomeView()),
-      GoRoute(path: schedule, builder: (context, state) => const ScheduleView()),
-      GoRoute(path: students, builder: (context, state) => const CreateExamPage()),
+      GoRoute(
+        path: schedule,
+        builder: (context, state) => const ScheduleView(),
+      ),
+      GoRoute(
+        path: students,
+        builder: (context, state) => const CreateExamPage(),
+      ),
+      GoRoute(
+        path: examQuestions,
+        builder: (context, state) => const ExamQuestions(),
+      ),
       GoRoute(
         path: autoGrade,
         builder: (context, state) => const AutoGradeView(),
@@ -85,7 +94,8 @@ class Routs {
       ),
       GoRoute(
         path: studentProfile,
-        builder: (context, state) => StudentProfile(from: state.extra as String),
+        builder: (context, state) =>
+            StudentProfile(from: state.extra as String),
       ),
       GoRoute(
         path: myClasses,

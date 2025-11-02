@@ -3,6 +3,7 @@ import 'package:catalyst/core/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:catalyst/core/widgets/base_scaffold.dart';
 import 'package:catalyst/features/drawer/drawer.dart';
+import 'package:catalyst/core/widgets/glass_books.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -53,58 +54,47 @@ class ScheduleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 200, // خليها ثابتة عشان الشكل يطلع مضبوط
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1E2430),
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.25),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            subject,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
+    return GlassBox(
+      child: SizedBox(
+        height: 150,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              subject,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-          const Spacer(),
-          const Divider(
-            color: Colors.white24,
-            thickness: 1,
-          ),
-          const SizedBox(height: 6),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                time,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 13,
+            const Spacer(),
+            const Divider(
+              color: Colors.white24,
+              thickness: 1,
+            ),
+            const SizedBox(height: 6),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  time,
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 13,
+                  ),
                 ),
-              ),
-              Text(
-                day,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 13,
+                Text(
+                  day,
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 13,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

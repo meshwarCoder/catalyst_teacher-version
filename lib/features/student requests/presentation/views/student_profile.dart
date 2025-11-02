@@ -1,6 +1,7 @@
 import 'package:catalyst/core/widgets/app_bar.dart';
 import 'package:catalyst/core/widgets/base_scaffold.dart';
 import 'package:catalyst/core/widgets/custom_text.dart';
+import 'package:catalyst/core/widgets/glass_books.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -62,10 +63,12 @@ class _JoinRequestView extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 4,
+                    horizontal: 12,
+                  ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF2ECC71).withOpacity(0.15),
+                    color: const Color(0xFF2ECC71).withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: CustomText(
@@ -84,7 +87,7 @@ class _JoinRequestView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withValues(alpha: 0.1),
                         blurRadius: 6,
                         offset: const Offset(0, 3),
                       ),
@@ -95,14 +98,26 @@ class _JoinRequestView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       _InfoItem(Icons.email, "Email", "jessica.m@email.com"),
-                      _InfoItem(Icons.school, "Grade & School",
-                          "Grade 10 - Northwood High"),
-                      _InfoItem(Icons.class_, "Class Requested",
-                          "Advanced Algebra"),
-                      _InfoItem(Icons.calendar_today, "Date of Request",
-                          "October 26, 2023"),
-                      _InfoItem(Icons.notes, "Reason for joining",
-                          '"I’m really passionate about math and want to challenge myself with more advanced topics to prepare for college."'),
+                      _InfoItem(
+                        Icons.school,
+                        "Grade & School",
+                        "Grade 10 - Northwood High",
+                      ),
+                      _InfoItem(
+                        Icons.class_,
+                        "Class Requested",
+                        "Advanced Algebra",
+                      ),
+                      _InfoItem(
+                        Icons.calendar_today,
+                        "Date of Request",
+                        "October 26, 2023",
+                      ),
+                      _InfoItem(
+                        Icons.notes,
+                        "Reason for joining",
+                        '"I’m really passionate about math and want to challenge myself with more advanced topics to prepare for college."',
+                      ),
                     ],
                   ),
                 ),
@@ -114,8 +129,10 @@ class _JoinRequestView extends StatelessWidget {
                     color: const Color(0xFF2C3240),
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 12,
+                  ),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -138,7 +155,7 @@ class _JoinRequestView extends StatelessWidget {
             color: const Color(0xFF1E2230),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
+                color: Colors.black.withValues(alpha: 0.3),
                 blurRadius: 8,
                 offset: const Offset(0, -2),
               ),
@@ -193,8 +210,6 @@ class _JoinRequestView extends StatelessWidget {
   }
 }
 
-//
-// ========== 2️⃣ واجهة الطالب داخل الكلاس ==========
 class _ClassStudentView extends StatelessWidget {
   const _ClassStudentView();
 
@@ -226,11 +241,7 @@ class _ClassStudentView extends StatelessWidget {
           const SizedBox(height: 24),
 
           // Student performance stats
-          Container(
-            decoration: BoxDecoration(
-              color: const Color(0xFF2C3240),
-              borderRadius: BorderRadius.circular(16),
-            ),
+          GlassBox(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -244,19 +255,18 @@ class _ClassStudentView extends StatelessWidget {
           const SizedBox(height: 20),
 
           // Additional info section
-          Container(
-            decoration: BoxDecoration(
-              color: const Color(0xFF2C3240),
-              borderRadius: BorderRadius.circular(16),
-            ),
+          GlassBox(
             padding: const EdgeInsets.all(16),
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _InfoItem(Icons.mail, "Email", "jessica.m@email.com"),
                 _InfoItem(Icons.phone, "Phone", "+1 (555) 123-4567"),
-                _InfoItem(Icons.note, "Last Feedback",
-                    "Doing great in assignments, needs improvement in attendance."),
+                _InfoItem(
+                  Icons.note,
+                  "Last Feedback",
+                  "Doing great in assignments, needs improvement in attendance.",
+                ),
               ],
             ),
           ),
@@ -288,17 +298,9 @@ class _InfoItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(
-                  text: title,
-                  color: Colors.grey[400],
-                  fontSize: 13,
-                ),
+                CustomText(text: title, color: Colors.grey[400], fontSize: 13),
                 const SizedBox(height: 2),
-                CustomText(
-                  text: value,
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
+                CustomText(text: value, color: Colors.white, fontSize: 14),
               ],
             ),
           ),
@@ -318,11 +320,7 @@ class _PerformanceItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomText(
-          text: label,
-          color: Colors.grey[400],
-          fontSize: 13,
-        ),
+        CustomText(text: label, color: Colors.grey[400], fontSize: 13),
         const SizedBox(height: 4),
         CustomText(
           text: value,

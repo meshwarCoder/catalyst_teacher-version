@@ -41,15 +41,15 @@ class _VerificationCodeState extends State<VerificationCode> {
       child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
         listener: (context, state) {
           if (state is ForgetPasswordSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
             GoRouter.of(context).push(Routs.resetPassword);
           }
           if (state is ForgetPasswordFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
           }
         },
         builder: (context, state) {

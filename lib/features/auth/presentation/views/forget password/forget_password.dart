@@ -35,90 +35,89 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
         listener: (context, state) {
           if (state is ForgetPasswordSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
             GoRouter.of(context).push(Routs.verificationCode);
           }
           if (state is ForgetPasswordFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
           }
         },
         builder: (context, state) {
           return Stack(
             children: [
-             Opacity(
-              opacity: state is ForgetPasswordLoading ? 0.5 : 1,
-               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 26),
-                child: Column(
-                  children: [
-                    Spacer(flex: 5),
-                    Form(
-                      autovalidateMode: autoValidate,
-                      key: _formKey,
-                      child: CustomTextformfield(
-                        controller: context
-                            .read<ForgetPasswordCubit>()
-                            .emailController,
-                        label: 'Email',
-                        hintText: 'Enter your email',
-                        icon: Icons.email,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your email';
+              Opacity(
+                opacity: state is ForgetPasswordLoading ? 0.5 : 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 26),
+                  child: Column(
+                    children: [
+                      Spacer(),
+                      Form(
+                        autovalidateMode: autoValidate,
+                        key: _formKey,
+                        child: CustomTextformfield(
+                          controller: context
+                              .read<ForgetPasswordCubit>()
+                              .emailController,
+                          label: 'Email',
+                          icon: Icons.email,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Please enter your email';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 35),
+                      CustomButton(
+                        text: 'SEND',
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            context
+                                .read<ForgetPasswordCubit>()
+                                .forgotPassword();
+                          } else {
+                            setState(() {
+                              autoValidate = AutovalidateMode.onUserInteraction;
+                            });
                           }
-                          return null;
                         },
                       ),
-                    ),
-                    const SizedBox(height: 35),
-                    CustomButton(
-                      text: 'SEND',
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          context.read<ForgetPasswordCubit>().forgotPassword();
-                        } else {
-                          setState(() {
-                            autoValidate = AutovalidateMode.onUserInteraction;
-                          });
-                        }
-                      },
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomText(
-                          text: 'Already have an account?',
-                          color: AppColors.likeWhite,
-                          fontSize: 12,
-                        ),
-                        const SizedBox(width: 5),
-                        InkWell(
-                          onTap: () {
-                            GoRouter.of(context).go(Routs.login);
-                          },
-                          child: CustomText(
-                            text: 'Login',
-                            color: AppColors.button,
-                            fontSize: 14,
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomText(
+                            text: 'Already have an account?',
+                            color: AppColors.likeWhite,
+                            fontSize: 12,
                           ),
-                        ),
-                      ],
-                    ),
-                    Spacer(flex: 2),
-                  ],
+                          const SizedBox(width: 5),
+                          InkWell(
+                            onTap: () {
+                              GoRouter.of(context).go(Routs.login);
+                            },
+                            child: CustomText(
+                              text: 'Login',
+                              color: AppColors.button,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                    ],
+                  ),
                 ),
-                           ),
-             ),
-             if (state is ForgetPasswordLoading)
-              const Center(
-                child: CircularProgressIndicator(),
               ),
-             ],
+              if (state is ForgetPasswordLoading)
+                const Center(child: CircularProgressIndicator()),
+            ],
           );
         },
       ),

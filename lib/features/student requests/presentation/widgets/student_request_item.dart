@@ -1,14 +1,11 @@
+import 'package:catalyst/core/widgets/glass_books.dart';
 import 'package:flutter/material.dart';
-import 'package:catalyst/core/utils/app_colors.dart';
 import 'package:catalyst/core/widgets/custom_text.dart';
 import 'package:go_router/go_router.dart';
 import 'package:catalyst/core/utils/routs.dart';
 
 class StudentRequestItem extends StatelessWidget {
-  const StudentRequestItem({
-    super.key,
-    required this.student,
-  });
+  const StudentRequestItem({super.key, required this.student});
 
   final Map<String, String> student;
 
@@ -18,21 +15,9 @@ class StudentRequestItem extends StatelessWidget {
       onTap: () {
         GoRouter.of(context).push(Routs.studentProfile, extra: 'requests');
       },
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 16),
-        decoration: BoxDecoration(
-          color: AppColors.likeBlack,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
-              blurRadius: 6,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: GlassBox(
           child: Column(
             children: [
               Row(
@@ -68,17 +53,19 @@ class StudentRequestItem extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-      
+
               // =========== Buttons Row ===========
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ElevatedButton(
-                    
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                      backgroundColor: Colors.red,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 25,
+                        vertical: 15,
+                      ),
+                      backgroundColor: Colors.red.withValues(alpha: 0.8),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -89,8 +76,11 @@ class StudentRequestItem extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                      backgroundColor: Colors.green,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 25,
+                        vertical: 15,
+                      ),
+                      backgroundColor: Colors.green.withValues(alpha: 0.8),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),

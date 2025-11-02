@@ -16,7 +16,8 @@ class CatalystTeacher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ForgetPasswordCubit(getIt.get<AuthRepoImplementation>()),
+      create: (context) =>
+          ForgetPasswordCubit(getIt.get<AuthRepoImplementation>()),
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: Routs.router,

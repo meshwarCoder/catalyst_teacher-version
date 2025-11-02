@@ -19,9 +19,7 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
-
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();  
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   AutovalidateMode autoValidate = AutovalidateMode.disabled;
 
@@ -42,7 +40,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             key: _formKey,
             child: Column(
               children: [
-                Spacer(flex: 5,),
+                Spacer(flex: 5),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: CustomText(
@@ -53,9 +51,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ),
                 const SizedBox(height: 5),
                 CustomTextformfield(
-                  controller: context.read<ForgetPasswordCubit>().passwordController,
+                  controller: context
+                      .read<ForgetPasswordCubit>()
+                      .passwordController,
                   label: 'Password',
-                  hintText: 'Enter your password',
                   icon: Icons.lock,
                   isPassword: true,
                   validator: Validation.validatePassword,
@@ -71,9 +70,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ),
                 const SizedBox(height: 5),
                 CustomTextformfield(
-                  controller: context.read<ForgetPasswordCubit>().confirmPasswordController,
+                  controller: context
+                      .read<ForgetPasswordCubit>()
+                      .confirmPasswordController,
                   label: 'Confirm Password',
-                  hintText: 'confirm password',
                   icon: Icons.lock,
                   isPassword: true,
                   validator: (value) => Validation.validateConfirmPassword(
@@ -88,14 +88,14 @@ class _ResetPasswordState extends State<ResetPassword> {
                     if (_formKey.currentState!.validate()) {
                       context.read<ForgetPasswordCubit>().resetPassword();
                       GoRouter.of(context).go(Routs.login);
-                    }else{
+                    } else {
                       setState(() {
                         autoValidate = AutovalidateMode.always;
                       });
                     }
                   },
                 ),
-                const Spacer(flex: 2,),              
+                const Spacer(flex: 2),
               ],
             ),
           ),

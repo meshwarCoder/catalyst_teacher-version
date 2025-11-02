@@ -45,7 +45,7 @@ class _SplashViewState extends State<SplashView>
     // الانتقال بعد 3 ثواني
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        context.go(Routs.root);
+        context.go(Routs.login);
       }
     });
   }

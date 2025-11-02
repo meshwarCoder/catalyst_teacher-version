@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:catalyst/core/utils/app_colors.dart';
 
 class BaseScaffold extends StatelessWidget {
   const BaseScaffold({
@@ -15,11 +14,21 @@ class BaseScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.scaffoldBackground,
-      drawer: drawer,
-      appBar: appBar,
-      body: child,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.black, Colors.blue.shade900],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        drawer: drawer,
+        appBar: appBar,
+        body: SafeArea(child: child),
+      ),
     );
   }
 }
